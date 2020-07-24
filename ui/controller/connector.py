@@ -1,12 +1,12 @@
 from ui.view.base import ComicUi
 
-from nav import btn_was_clicked
-from get_term import get_name
-from disp_cell_cont import set_table_contents
+from ui.controller.nav import btn_was_clicked
+from ui.controller.get_term import get_name
+from ui.controller.disp_cell_cont import set_table_contents
+from ui.controller.add_info import get_info
+from ui.controller.
 
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
+from PyQt5.QtWidgets import QApplication
 
 import sys
 
@@ -17,8 +17,15 @@ class ComicCtrl:
         self.connectSignals()
 
     def connectSignals(self):
-        search_bar = self.view.search.ledit
         table1 = self.view.table.table_list[0]
+        table2 = self.view.table.table_list[2]
+
+        labels = self.view.info.labels
+
+        table1.cellDoubleClicked.connect(lambda : get_info(table1, 'SEARCH', labels))
+        table2.cellDoubleClicked.connect(lambda : get_info(table2, 'DOWNLOADED'))
+
+        search_bar = self.view.search.ledit
         self.view.search.btn.clicked.connect(lambda : [content_list := get_name(search_bar), set_table_contents(content_list, table1)])
         self.view.search.ledit.returnPressed.connect(lambda : [content_list := get_name(search_bar), set_table_contents(content_list, table1)])
 

@@ -1,4 +1,5 @@
-from PyQt5.QtWidgets import *
+from PyQt5.QtWidgets import QTabWidget, QTableWidget, QStackedLayout, QWidget,\
+                            QPushButton, QHeaderView, QHBoxLayout, QGridLayout
 
 class Table:
     def __init__(self):

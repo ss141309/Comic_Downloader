@@ -3,8 +3,8 @@ from ui.view.search_ui import Search
 from ui.view.info_ui import Info
 from ui.view.disp_img import DispImg
 
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
+from PyQt5.QtGui import QIcon
+from PyQt5.QtWidgets import QMainWindow, QGridLayout, QWidget
 
 import sys
 
@@ -12,7 +12,7 @@ class ComicUi(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle('Comic Viewer')
+        self.setWindowTitle('Comic Downloader')
         self.setWindowIcon(QIcon('logo.png'))
         self.setGeometry(1200, 50, 600, 400)
 
@@ -32,11 +32,3 @@ class ComicUi(QMainWindow):
 
         self.disp_img = DispImg()
         self.generalLayout.addWidget(self.disp_img.label_Image, 6, 1, 4, 5)
-
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-
-    view = ComicUi()
-    view.show()
-
-    sys.exit(app.exec_())

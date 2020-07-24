@@ -1,14 +1,14 @@
-from PyQt5.QtWidgets import *
-from PyQt5.QtCore import *
+from PyQt5.QtWidgets import QTableWidgetItem
+from PyQt5.QtCore import Qt
 
 def set_table_contents(records, table):
     table.clearContents()
-    
-    for i in enumerate(records):
-        d = 0
-        table.setItem(i[0], d, QTableWidgetItem(str(i[1][0])))
-        item = QTableWidgetItem(i[1][1])
+
+    for row, ele in enumerate(records):
+        column = 0
+        table.setItem(row, column, QTableWidgetItem(str(ele[0])))
+        item = QTableWidgetItem(ele[1])
         item.setTextAlignment(Qt.AlignCenter)
         item.setFlags(Qt.ItemIsSelectable | Qt.ItemIsEnabled) # set items not editable
-        table.setItem(i[0], d+1, item)
-        d += i[0]
+        table.setItem(row, column+1, item)
+        column += row

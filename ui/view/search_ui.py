@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import *
+from PyQt5.QtWidgets import QHBoxLayout, QLineEdit, QPushButton
 
 class Search:
     def __init__(self):
